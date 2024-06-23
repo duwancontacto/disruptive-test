@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
-
-import { FaPhotoVideo } from "react-icons/fa";
+import Image from "next/image";
+import LogoHausler from "@/assets/logoHausler.svg";
+import {FaPhotoVideo} from "react-icons/fa";
 
 export function Nav() {
   return (
@@ -11,7 +12,14 @@ export function Nav() {
           className="flex items-center gap-2 text-lg font-semibold"
           href="#"
         >
-          <FaPhotoVideo className="w-6 h-6" />
+          <div>
+            <Image
+              src={LogoHausler}
+              alt="logoHausler"
+              width={150}
+              height={100}
+            />
+          </div>
         </Link>
       </header>
     </>
