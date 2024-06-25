@@ -1,15 +1,20 @@
 import React from "react";
 import Image from "next/image";
-import LogoFooter from "@/assets/logoFooter.svg";
 import cardFondo from "@/assets/cardFondo.svg";
 import cardFondo2 from "@/assets/cardFondo2.svg";
 import cardFondo3 from "@/assets/cardFondo3.svg";
-import {CiLocationOn, CiDollar, CiCreditCard2} from "react-icons/ci";
-import {IoMdTime} from "react-icons/io";
-import {HiOutlineUserGroup} from "react-icons/hi2";
-import {RiDrinksLine} from "react-icons/ri";
-import {MdOutlineDirectionsCar} from "react-icons/md";
+import { CiLocationOn, CiDollar, CiCreditCard2 } from "react-icons/ci";
+import { IoMdTime } from "react-icons/io";
+import { HiOutlineUserGroup } from "react-icons/hi2";
+import { RiDrinksLine } from "react-icons/ri";
+import { MdOutlineDirectionsCar } from "react-icons/md";
+import useContentStore from "@/store/contentStore";
+import { baseUrl } from "@/services";
 export default function CardSelectBrach() {
+  const contents = useContentStore((state) => state.filterContents);
+
+  console.log("first", contents);
+
   const cards = [
     {
       img: cardFondo,
@@ -50,34 +55,50 @@ export default function CardSelectBrach() {
 
   return (
     <div>
-      {cards.map((card) => (
+      {contents.map((card) => (
         <div
-          key={card.city}
-          className="max-w-md mt-3 mx-auto z-20 relative rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+          key={card._id}
+          className="max-w-md mt-5 mx-auto z-20 border relative rounded-xl shadow-md overflow-hidden md:max-w-4xl"
         >
           <div className="md:flex">
-            <div className="md:shrink-0">
+            <div className="md:shrink-0 border w-full md:w-1/2">
               <Image
-                src={card.img}
+                src={`${baseUrl}/public/${card.primary_image}`}
                 alt="Retreat Image"
                 width={50}
                 height={50}
-                className="  object-cover  md:rounded-s-xl h-full md:w-[320px] w-full imagencard"
+                className="  object-cover  md:rounded-s-xl h-full  w-full "
               />
             </div>
-            <div className=" w-full rounded-b-xl md:rounded-r-xl pl-5 p-3 borderCard">
-              <h6 className="text-[#009080] font-bold text-start text-[20px] ">
-                {card.city}
+            <div className=" w-full rounded-b-xl md:rounded-s-none md:rounded-r-xl  px-7 p-3 borderCard">
+              <h6 className="text-[#009080] font-bold pl-1 text-start text-[25px] ">
+                {card.name}
               </h6>
-              <div className="flex  items-center  ">
-                <CiLocationOn className="mr-1 " color="#172832" />
-                <h6 className="text-[#172832] mb-2 text-start text-[14px] ">
+              <div className="flex  items-center  mb-2  ">
+                <CiLocationOn size={40} className="mr-1" color="#172832" />
+                <h6 className="text-[#172832]  text-start text-[14px] ">
                   {card.address}
                 </h6>
               </div>
-              <div className=" w-full  CarBottomBar "></div>
+              <div className=" w-full  CarBottomBar ml-1 "></div>
 
-              <div className="flex  items-center  mt-2">
+              {card.details.map((detail: any) => (
+                <div key={detail.id} className="flex pl-3 items-start   mt-2">
+                  <div dangerouslySetInnerHTML={{ __html: detail.icon }} />
+                  <p className="text-[#172832] pl-2 text-start text-[11px]">
+                    {detail.description}
+                  </p>
+                </div>
+              ))}
+
+              <div className="flex pl-3 items-start   mt-2">
+                <CiCreditCard2 className=" mr-1" size={18} color="#172832" />
+                <p className="text-[#172832] pl-2 font-bold text-start text-[11px]">
+                  {card.robotic ? "CAJA ROBOTIZADA" : "CAJA TRADICIONAL"}
+                </p>
+              </div>
+
+              {/* <div className="flex  items-center  mt-2">
                 <IoMdTime className=" mr-1" color="#172832" />
                 <p className="text-[#172832]  text-start text-[11px]">
                   {card.time}
@@ -117,7 +138,7 @@ export default function CardSelectBrach() {
                 <p className="text-[#172832] font-bold text-start text-[11px]">
                   {card.pay}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ export const Api = (props: ApiProps) => {
   };
 
   const instance = axios.create({
-    baseURL: `${baseUrl}`,
+    baseURL: `${baseUrl}/api/v1`,
     method: method,
     headers: {
       "Content-Type": "application/json",

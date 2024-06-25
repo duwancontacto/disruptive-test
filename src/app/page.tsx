@@ -1,11 +1,25 @@
 "use client";
 import Footer from "@/Components/Footer";
-import {Nav} from "@/Components/Nav";
+import { Nav } from "@/Components/Nav";
 import SelectBranch from "@/Components/Steps/SelectBranch.tsx";
 import Image from "next/image";
 import fondoHome from "@/assets/fondoHome.svg";
+import { useEffect } from "react";
+import useContentStore from "@/store/contentStore";
 
 export default function Home() {
+  const { getCategories, getContents } = useContentStore((state) => ({
+    getCategories: state.getThemesAndCategories,
+    getContents: state.getContents,
+  }));
+
+  useEffect(() => {
+    getCategories();
+    getContents();
+
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Nav />
@@ -14,7 +28,7 @@ export default function Home() {
           <Image
             src={fondoHome}
             alt=""
-            className="absolute w-full top-0 left-0 h-full object-cover "
+            className="absolute z-[-1] w-full top-0 left-0 h-full object-cover "
             width={200}
             height={100}
           />

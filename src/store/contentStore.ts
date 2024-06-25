@@ -1,22 +1,16 @@
-import {
-  getCategories,
-  getContents,
-  getThemes,
-  uploadContent,
-} from "@/services/contentService";
+import { getCategories, getContents } from "@/services/contentService";
 import { Category } from "@/types/Models/Categories";
 import { Theme } from "@/types/Models/Themes";
-import { IContentPayload } from "@/types/Services/ContentInterface";
 import { create } from "zustand";
 
 interface IContentStore {
   themes: Theme[];
   categories: Category[];
-  loadingUploadContent: boolean;
   loadingContents: Boolean;
   getThemesAndCategories: () => void;
-  UploadContent: (data: IContentPayload) => void;
+  filterByCategory: (category_id: string) => void;
   contents: any[];
+  filterContents: any[];
   getContents: (
     search?: String,
     theme_id?: String,
@@ -24,53 +18,50 @@ interface IContentStore {
   ) => void;
 }
 
-const useContentStore = create<IContentStore>((set) => ({
+const useContentStore = create<IContentStore>((set, get) => ({
   themes: [],
   categories: [],
   contents: [],
-  loadingUploadContent: false,
   loadingContents: false,
+  filterContents: [],
   getThemesAndCategories: async () => {
     try {
-      const responseThemes = await getThemes();
       const responseCategories = await getCategories();
-      set({ themes: responseThemes.data, categories: responseCategories.data });
+      set({ categories: responseCategories.data });
     } catch (error: any) {
       console.log("Error getting themes", error);
     }
   },
 
-  getContents: async (
-    search?: String,
-    theme_id?: String,
-    category_id?: String
-  ) => {
-    try {
-      set({ loadingContents: true });
-      const response = await getContents(search, theme_id, category_id);
+  filterByCategory: (category_id: string) => {
+    const contents = get().contents;
 
-      setTimeout(() => {
-        set({
-          contents: response.data,
-          loadingContents: false,
-          loadingUploadContent: false,
-        });
-      }, 500);
-    } catch (error: any) {
-      set({ loadingContents: false });
-      console.log("Error getting contents", error);
+    if (category_id === "all") {
+      set({
+        filterContents: contents,
+      });
+    } else {
+      set({
+        filterContents: contents.filter(
+          (content) => content.category === category_id
+        ),
+      });
     }
   },
 
-  UploadContent: async (data: IContentPayload) => {
+  getContents: async () => {
     try {
-      const { getContents } = useContentStore.getState();
-      set({ loadingUploadContent: true });
-      await uploadContent(data);
-      await getContents();
+      set({ loadingContents: true });
+      const response = await getContents();
+
+      set({
+        filterContents: response.data,
+        contents: response.data,
+        loadingContents: false,
+      });
     } catch (error: any) {
-      set({ loadingUploadContent: false });
-      console.log("Error uploading content", error);
+      set({ loadingContents: false });
+      console.log("Error getting contents", error);
     }
   },
 }));
