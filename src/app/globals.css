@@ -85,3 +85,26 @@
 .borderCard {
   border: #009080 1.9px solid;
 }
+.borderBox {
+  border: 0.9px solid #009080;
+  border-radius: 15px;
+}
+.inputQuote {
+  border-bottom: 0.9px solid #172832;
+  opacity: 13;
+  background: transparent;
+  outline: none;
+  height: 29px;
+}
+.buttonQuote {
+  background: #172832;
+  padding: 20px;
+  border-radius: 30px;
+  width: 246px;
+}
+.buttonReturn {
+  padding: 20px;
+  border-radius: 30px;
+  border: 1px solid #172832;
+  width: 246px;
+}

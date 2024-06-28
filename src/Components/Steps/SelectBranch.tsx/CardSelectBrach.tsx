@@ -3,13 +3,15 @@ import Image from "next/image";
 import cardFondo from "@/assets/cardFondo.svg";
 import cardFondo2 from "@/assets/cardFondo2.svg";
 import cardFondo3 from "@/assets/cardFondo3.svg";
-import { CiLocationOn, CiDollar, CiCreditCard2 } from "react-icons/ci";
-import { IoMdTime } from "react-icons/io";
-import { HiOutlineUserGroup } from "react-icons/hi2";
-import { RiDrinksLine } from "react-icons/ri";
-import { MdOutlineDirectionsCar } from "react-icons/md";
+import {CiLocationOn, CiDollar, CiCreditCard2} from "react-icons/ci";
+import {IoMdAdd} from "react-icons/io";
+
+import {IoMdTime} from "react-icons/io";
+import {HiOutlineUserGroup} from "react-icons/hi2";
+import {RiDrinksLine} from "react-icons/ri";
+import {MdOutlineDirectionsCar} from "react-icons/md";
 import useContentStore from "@/store/contentStore";
-import { baseUrl } from "@/services";
+import {baseUrl} from "@/services";
 export default function CardSelectBrach() {
   const contents = useContentStore((state) => state.filterContents);
 
@@ -84,7 +86,7 @@ export default function CardSelectBrach() {
 
               {card.details.map((detail: any) => (
                 <div key={detail.id} className="flex pl-3 items-start   mt-2">
-                  <div dangerouslySetInnerHTML={{ __html: detail.icon }} />
+                  <div dangerouslySetInnerHTML={{__html: detail.icon}} />
                   <p className="text-[#172832] pl-2 text-start text-[11px]">
                     {detail.description}
                   </p>
@@ -96,6 +98,13 @@ export default function CardSelectBrach() {
                 <p className="text-[#172832] pl-2 font-bold text-start text-[11px]">
                   {card.robotic ? "CAJA ROBOTIZADA" : "CAJA TRADICIONAL"}
                 </p>
+              </div>
+              <div className="flex justify-between items-center">
+                <IoMdAdd
+                  size={25}
+                  color={"#009080"}
+                  className="cursor-pointer"
+                />
               </div>
 
               {/* <div className="flex  items-center  mt-2">

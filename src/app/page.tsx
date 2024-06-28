@@ -1,14 +1,18 @@
 "use client";
 import Footer from "@/Components/Footer";
-import { Nav } from "@/Components/Nav";
+import {Nav} from "@/Components/Nav";
 import SelectBranch from "@/Components/Steps/SelectBranch.tsx";
-import Image from "next/image";
-import fondoHome from "@/assets/fondoHome.svg";
-import { useEffect } from "react";
-import useContentStore from "@/store/contentStore";
 
+import {useEffect} from "react";
+import useContentStore from "@/store/contentStore";
+import SelectSize from "@/Components/Steps/SelectSize";
+
+import {FaWhatsapp} from "react-icons/fa";
+import Quote from "@/Components/Steps/Quote";
+import Hire from "@/Components/Steps/Hire";
+import FinalizePurchase from "@/Components/Steps/FinalizePurchase";
 export default function Home() {
-  const { getCategories, getContents } = useContentStore((state) => ({
+  const {getCategories, getContents} = useContentStore((state) => ({
     getCategories: state.getThemesAndCategories,
     getContents: state.getContents,
   }));
@@ -25,18 +29,21 @@ export default function Home() {
       <Nav />
       <main className="flex-1 bg-gray-100/40 dark:bg-gray-800/40 p-6 md:p-10">
         <div>
-          <Image
-            src={fondoHome}
-            alt=""
-            className="absolute z-[-1] w-full top-0 left-0 h-full object-cover "
-            width={200}
-            height={100}
+          {/*    <SelectBranch />  */}
+          {/*     <SelectSize /> */}
+          {/*  <Quote /> */}
+          {/*    <Hire /> */}
+          <FinalizePurchase />
+        </div>
+        <div className="flex justify-end">
+          <FaWhatsapp
+            color={"#3AD8AB"}
+            size={60}
+            className="mt-5 cursor-pointer"
           />
         </div>
-        <div>
-          <SelectBranch />
-        </div>
       </main>
+
       <Footer />
     </div>
   );
