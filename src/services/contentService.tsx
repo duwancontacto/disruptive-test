@@ -14,4 +14,19 @@ const getContents = () => {
   });
 };
 
-export { getCategories, getContents };
+const createCustomer = (payload: { email: string; password: string }) => {
+  return Api({
+    endpoint: `/orders/customers`,
+    method: "POST",
+    _data: payload,
+  });
+};
+const createOrder = (payload: any) => {
+  return Api({
+    endpoint: `/orders`,
+    method: "POST",
+    _data: payload,
+  });
+};
+
+export { getCategories, getContents, createCustomer, createOrder };

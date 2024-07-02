@@ -2,12 +2,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import LogoHausler from "@/assets/logoHausler.svg";
-import {FaPhotoVideo} from "react-icons/fa";
+import { FaPhotoVideo } from "react-icons/fa";
 
 export function Nav() {
   return (
     <>
-      <header className="flex items-center justify-center h-16 px-6 border-b">
+      <header className="flex items-center bg-white justify-center h-16 px-6 mb-5 ">
         <Link
           className="flex items-center gap-2 text-lg font-semibold"
           href="#"

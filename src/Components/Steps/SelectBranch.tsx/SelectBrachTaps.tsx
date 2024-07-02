@@ -1,3 +1,4 @@
+"use client";
 import useContentStore from "@/store/contentStore";
 import React from "react";
 
@@ -18,15 +19,15 @@ export default function SelectBrachTaps() {
 
   return (
     <div className="pc-0 md:px-40 flex ">
-      <div className="md:flex block justify-center items-center w-auto mx-auto mt-10 px-10 border-solid border-b-2">
+      <div className="md:flex block justify-center items-center w-auto mx-auto  px-10 border-solid border-b-2">
         {allCategories.map((category) => (
           <button
             onClick={() => handleCategory(category._id)}
             key={category._id}
             className={`cursor-pointer  w-[87px] mx-3 h-[37px]  text-[16px] ${
               selectedCategory === category._id
-                ? "bg-[#000000]-500 shadow-lg shadow-[#000000]-500/50  border  bg-[#172832] text-[#FFFFFF]"
-                : " text-[#172832]"
+                ? " shadow-lg shadow-[#000000]-500/50  border  bg-primaryDark text-[#FFFFFF]"
+                : " text-[primaryDark]"
             }  `}
           >
             {category.name}

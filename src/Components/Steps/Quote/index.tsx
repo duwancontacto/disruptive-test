@@ -3,6 +3,7 @@ import React from "react";
 import fondOtherPage from "@/assets/fondOtherPage.svg";
 import DataQuote from "./DataQuote";
 import ChooseUs from "./ChooseUs";
+import Steps from "..";
 
 export default function Quote() {
   return (
@@ -18,17 +19,19 @@ export default function Quote() {
           />
         </div>
         <div className="">
-          <p className="text-[#172832] md:text-[47px] text-[25px] text-center ">
+          <p className="text-[primaryDark] md:text-[47px] text-[25px] text-center ">
             Estás a un paso de
             <span className="font-bold ms-3 md:text-[47px] text-[25px] ">
               contratar tu caja{" "}
             </span>
           </p>
-          <p className="text-[#172832] md:text-[47px] text-[25px] text-center font-bold  ">
+          <p className="text-[primaryDark] md:text-[47px] text-[25px] text-center font-bold  ">
             de seguridad privada
           </p>
         </div>
-        <div className="lg:flex block justify-between  mt-10">
+        <Steps currentStep={3} />
+
+        <div className="lg:flex block justify-between  mt-10 gap-20">
           <ChooseUs />
 
           <DataQuote />

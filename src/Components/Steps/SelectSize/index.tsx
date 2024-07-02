@@ -3,6 +3,7 @@ import CardSelectSize from "./CardSelectSize";
 import Consultation from "../Consultation";
 import Image from "next/image";
 import fondOtherPage from "@/assets/fondOtherPage.svg";
+import Steps from "..";
 export default function SelectSize() {
   return (
     <div className="flex flex-col min-h-screen ">
@@ -18,16 +19,16 @@ export default function SelectSize() {
         </div>
 
         <div className="">
-          <p className="text-center text-[#172832] text-[45px]">
+          <p className="text-center text-[primaryDark] text-[45px]">
             ¿Qué
             <span className="font-bold ml-2 ">tamaño de caja</span> necesitás?
           </p>
-          <p className="text-center text-[#172832] text-[25px]">
+          <p className="text-center text-[primaryDark] text-[25px]">
             Cada una de nuestras cajas robotizadas cuenta con un seguro asociado
             brindado por líderes de la industria.
           </p>
         </div>
-
+        <Steps currentStep={2} />
         <CardSelectSize />
         <Consultation />
       </main>

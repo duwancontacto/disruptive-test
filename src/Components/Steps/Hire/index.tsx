@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import fondOtherPage from "@/assets/fondOtherPage.svg";
 import CardHire from "./CardHire";
+import Steps from "..";
 export default function Hire() {
   return (
     <div className="flex flex-col min-h-screen z-30 max-w-md md:max-w-6xl mx-auto ">
@@ -16,13 +17,15 @@ export default function Hire() {
           />
         </div>
         <div className="">
-          <p className="text-[#172832] md:text-[48px] text-[25px] text-center  font-bold">
+          <p className="text-[primaryDark] md:text-[48px] text-[25px] text-center  font-bold">
             Tu contratación
           </p>
-          <p className="text-[#172832] md:text-[28px] text-[28px] text-center opacity-90 ">
+          <p className="text-[primaryDark] md:text-[28px] text-[28px] text-center opacity-90 ">
             Verificá los detalles de tu selección.
           </p>
         </div>
+
+        <Steps currentStep={4} />
         <CardHire />
       </main>
     </div>

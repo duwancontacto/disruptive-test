@@ -1,51 +1,100 @@
 import React from "react";
 
-export default function PurchaseData() {
+interface Props {
+  register: any;
+  errors: any;
+}
+
+export default function PurchaseData({ register, errors }: Props) {
   return (
     <div className=" w-full p-0 md:p-5 ">
-      <p className="text-[#172832] text-[40px] opacity-90  mt-10 lg:mt-0">
+      <p className="text-[primaryDark] text-[40px] opacity-90  mt-10 lg:mt-0">
         Tus datos
       </p>
       <div className="">
-        <div className=" mt-10 md:mt-20">
-          <p className="text-center m-0 text-[#172832] text-[18px] ">
-            Nombre Y Apellido
-          </p>
-          <input type="text" className=" rounded inputQuote  w-full   " />
-        </div>
-        <div className="mt-20  ">
-          <p className="text-center m-0 text-[#172832] text-[18px] ">Dni</p>
+        <div className="mt-20">
           <input
             type="text"
-            className="  rounded inputQuote  text-center w-full  "
+            placeholder="Nombre y Apellido"
+            className={`inputQuote border-b  w-full text-center pb-2 ${
+              errors?.name
+                ? "border-b-red-500 placeholder:text-red-500"
+                : "border-b-primaryDark placeholder:text-primaryDark"
+            }`}
+            {...register("name", { required: "Este campo es obligatorio" })}
           />
+          {errors?.name && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors?.name?.message?.toString()}
+            </p>
+          )}
         </div>
-
-        <div className="mt-20">
-          <p className="text-center m-0 text-[#172832] text-[18px] mt-8">
-            teléfono
-          </p>
-          <input
-            type="number"
-            className=" rounded inputQuote  w-full text-center  "
-            placeholder=""
-          />
-        </div>
-
-        <div className="mt-20">
-          <p className="text-center m-0 text-[#172832] text-[18px] ">Email</p>
+        <div className="">
           <input
             type="text"
-            className=" rounded inputQuote  w-full text-center  "
+            className={`inputQuote border-b  w-full text-center pb-2 mt-16 pt-2 ${
+              errors?.dni
+                ? "border-b-red-500  placeholder:text-red-500"
+                : "border-b-primaryDark  placeholder:text-primaryDark"
+            }`}
+            placeholder="Dni"
+            {...register("dni", {
+              required: "Este campo es obligatorio",
+            })}
           />
+          {errors?.dni && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors?.dni?.message?.toString()}
+            </p>
+          )}
         </div>
-        <div className="mt-20">
-          <p className="text-center m-0 text-[#172832] text-[18px] ">
-            notas del pedido (opcional)
-          </p>
+        <div className="">
           <input
             type="text"
-            className=" rounded inputQuote  w-full text-center  "
+            className={`inputQuote border-b  w-full text-center pb-2 mt-16 pt-2 ${
+              errors?.phone
+                ? "border-b-red-500  placeholder:text-red-500"
+                : "border-b-primaryDark  placeholder:text-primaryDark"
+            }`}
+            placeholder="Teléfono"
+            {...register("phone", {
+              required: "Este campo es obligatorio",
+            })}
+          />
+          {errors?.phone && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors?.phone?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="">
+          <input
+            type="email"
+            className={`inputQuote border-b  w-full text-center pb-2 mt-16 pt-2 ${
+              errors?.email
+                ? "border-b-red-500  placeholder:text-red-500"
+                : "border-b-primaryDark  placeholder:text-primaryDark"
+            }`}
+            placeholder="Correo Electrónico"
+            {...register("email", {
+              required: "Este campo es obligatorio",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: "Correo electrónico inválido",
+              },
+            })}
+          />
+          {errors?.email && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors?.email?.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="">
+          <input
+            type="text"
+            className={`inputQuote border-b  w-full text-center pb-2 mt-16 pt-2  border-b-primaryDark  placeholder:text-primaryDark`}
+            placeholder="Notas del Pedidio (Opcional)"
           />
         </div>
       </div>

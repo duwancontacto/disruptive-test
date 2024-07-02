@@ -4,8 +4,22 @@ import fondOtherPage from "@/assets/fondOtherPage.svg";
 import PurchaseData from "./PurchaseData";
 import PaymentMethods from "./PaymentMethods";
 import PaymentMethods2 from "./PaymentMethods";
+import Steps from "..";
+import useContentStore from "@/store/contentStore";
+import { useForm } from "react-hook-form";
 
 export default function FinalizePurchase() {
+  const setStep = useContentStore((state) => state.setStep);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data: any) => {
+    setStep(6, data);
+  };
+
   return (
     <div className="flex flex-col min-h-screen z-30 max-w-md md:max-w-6xl mx-auto ">
       <main className="flex-1  p-6 md:p-10">
@@ -19,17 +33,21 @@ export default function FinalizePurchase() {
           />
         </div>
         <div className="">
-          <p className="text-[#172832] md:text-[48px] text-[28px] text-center">
+          <p className="text-[primaryDark] md:text-[48px] text-[28px] text-center">
             Finalizá <span className="font-bold ">tu compra</span>
           </p>
-          <p className="text-[#172832] md:text-[28px] text-[25px] text-center opacity-90 ">
+          <p className="text-[primaryDark] md:text-[28px] text-[25px] text-center opacity-90 ">
             Formá parte de la experiencia Hausler.
           </p>
         </div>
-        <div className="block lg:flex justify-between ">
-          <PurchaseData />
-          <PaymentMethods2 />
-        </div>
+        <Steps currentStep={5} />
+        <form
+          className="block lg:flex justify-between "
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <PurchaseData errors={errors} register={register} />
+          <PaymentMethods2 errors={errors} register={register} />
+        </form>
       </main>
     </div>
   );

@@ -1,4 +1,9 @@
-import { getCategories, getContents } from "@/services/contentService";
+import {
+  createCustomer,
+  createOrder,
+  getCategories,
+  getContents,
+} from "@/services/contentService";
 import { Category } from "@/types/Models/Categories";
 import { Theme } from "@/types/Models/Themes";
 import { create } from "zustand";
@@ -9,8 +14,15 @@ interface IContentStore {
   loadingContents: Boolean;
   getThemesAndCategories: () => void;
   filterByCategory: (category_id: string) => void;
+  setStep: (step: number, id?: string) => void;
+  getContentBoxs: () => any;
+  getContentBox: () => any;
   contents: any[];
   filterContents: any[];
+  order: any;
+  step: number;
+  selectedContent: string | null;
+  selectedBox: string | null;
   getContents: (
     search?: String,
     theme_id?: String,
@@ -23,6 +35,10 @@ const useContentStore = create<IContentStore>((set, get) => ({
   categories: [],
   contents: [],
   loadingContents: false,
+  step: 1,
+  order: null,
+  selectedContent: null,
+  selectedBox: null,
   filterContents: [],
   getThemesAndCategories: async () => {
     try {
@@ -46,6 +62,81 @@ const useContentStore = create<IContentStore>((set, get) => ({
           (content) => content.category === category_id
         ),
       });
+    }
+  },
+
+  setStep: async (step: number, data: string | any) => {
+    try {
+      switch (step) {
+        case 1:
+          set({ selectedContent: null, selectedBox: null, order: null });
+          break;
+        case 2:
+          set({ selectedContent: data });
+          break;
+        case 3:
+          set({ selectedBox: data });
+          break;
+        case 4:
+          await createCustomer(data);
+          break;
+
+        case 6:
+          const { selectedContent, selectedBox } = get();
+
+          const box = get().getContentBox();
+
+          const payload = {
+            note: data.note,
+            box_type_id: box.box_type_id._id,
+            branch_id: selectedContent,
+            payment_method: data.paymentMethod,
+            customer: {
+              name: data.name,
+              email: data.email,
+              dni: data.dni,
+              phone: data.phone,
+            },
+          };
+
+          const order = await createOrder(payload);
+
+          set({ order: order.data });
+          break;
+
+        default:
+          break;
+      }
+
+      set({ step });
+    } catch (error) {
+      console.log("Error setting step", error);
+    }
+  },
+
+  getContentBoxs: () => {
+    try {
+      const { contents, selectedContent } = get();
+      const content = contents.find(
+        (content) => content._id === selectedContent
+      );
+      return content;
+    } catch (error: any) {
+      set({ loadingContents: false });
+      console.log("Error getting contents", error);
+    }
+  },
+  getContentBox: () => {
+    try {
+      const { contents, selectedContent, selectedBox } = get();
+      const content = contents.find(
+        (content) => content._id === selectedContent
+      );
+      const box = content?.boxes.find((box: any) => box._id === selectedBox);
+      return box;
+    } catch (error: any) {
+      set({ loadingContents: false });
+      console.log("Error getting contents", error);
     }
   },
 
