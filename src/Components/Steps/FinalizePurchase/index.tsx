@@ -6,7 +6,7 @@ import PaymentMethods from "./PaymentMethods";
 import PaymentMethods2 from "./PaymentMethods";
 import Steps from "..";
 import useContentStore from "@/store/contentStore";
-import { useForm } from "../../../../node_modules/react-hook-form/dist";
+import { useForm } from "react-hook-form";
 
 export default function FinalizePurchase() {
   const setStep = useContentStore((state) => state.setStep);

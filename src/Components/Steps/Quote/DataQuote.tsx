@@ -1,6 +1,6 @@
 import useContentStore from "@/store/contentStore";
 import React from "react";
-import { useForm } from "../../../../node_modules/react-hook-form/dist";
+import { useForm } from "react-hook-form";
 export default function DataQuote() {
   const setStep = useContentStore((state) => state.setStep);
   const {
