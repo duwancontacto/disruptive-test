@@ -6,8 +6,8 @@ import useContentStore from "@/store/contentStore";
 export default function CardHireLocation() {
   const getContentBoxs = useContentStore((state) => state.getContentBoxs());
   return (
-    <div className="w-full px-20 pt-14 ">
-      <div>
+    <div className="w-full px-5 md:px-20  py-14 ">
+      <a href={`${getContentBoxs.address_google_maps || ""}`} target="_blank">
         <Image
           src={locationHire}
           alt=""
@@ -15,7 +15,7 @@ export default function CardHireLocation() {
           width={50}
           height={50}
         />
-      </div>
+      </a>
       <div className="flex items-start pt-5">
         <CiLocationOn size={40} className="" />
 

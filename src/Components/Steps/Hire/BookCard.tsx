@@ -14,7 +14,7 @@ export default function BookCard() {
   };
 
   return (
-    <div className="flex justify-center items-center  p-3 md:p-10 borderCard">
+    <div className="flex justify-center items-center  p-3 py-10 md:p-10  border border-t-primaryGreen">
       <div className="text-center">
         <p className="text-[20px] text-[primaryDark] text-center">
           A modo de reserva se cobrará únicamente en tu tarjeta el primer mes de
@@ -37,16 +37,16 @@ export default function BookCard() {
           <p className="text-[20px] text-[primaryDark] ">por mes</p>
         </div>
 
-        <div className="block md:flex justify-center mt-9">
+        <div className="block md:flex justify-center mt-5">
           <button
             onClick={() => setStep(1)}
-            className="text-[16px] text-[primaryDark] font-bold buttonReturn "
+            className="text-[16px] text-[primaryDark] font-bold buttonReturn mt-5 "
           >
             VOLVER A COTIZAR
           </button>
           <button
             onClick={() => setStep(5)}
-            className="text-[#FFFFFF] text-[16px] font-bold buttonQuote mx-4 "
+            className="text-[#FFFFFF] text-[16px] font-bold buttonQuote mx-4 mt-5"
           >
             CONFIRMAR
           </button>

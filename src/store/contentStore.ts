@@ -17,12 +17,14 @@ interface IContentStore {
   setStep: (step: number, id?: string) => void;
   getContentBoxs: () => any;
   getContentBox: () => any;
+  preLoadOrder: () => void;
   contents: any[];
   filterContents: any[];
   order: any;
   step: number;
   selectedContent: string | null;
   selectedBox: string | null;
+  customer: any;
   getContents: (
     search?: String,
     theme_id?: String,
@@ -40,6 +42,7 @@ const useContentStore = create<IContentStore>((set, get) => ({
   selectedContent: null,
   selectedBox: null,
   filterContents: [],
+  customer: null,
   getThemesAndCategories: async () => {
     try {
       const responseCategories = await getCategories();
@@ -52,24 +55,35 @@ const useContentStore = create<IContentStore>((set, get) => ({
   filterByCategory: (category_id: string) => {
     const contents = get().contents;
 
-    if (category_id === "all") {
-      set({
-        filterContents: contents,
-      });
-    } else {
-      set({
-        filterContents: contents.filter(
-          (content) => content.category === category_id
-        ),
-      });
-    }
+    set({ filterContents: [] });
+
+    setTimeout(() => {
+      if (category_id === "all") {
+        set({
+          filterContents: contents,
+        });
+      } else {
+        set({
+          filterContents: contents.filter(
+            (content) => content.category === category_id
+          ),
+        });
+      }
+    }, 300);
   },
 
   setStep: async (step: number, data: string | any) => {
     try {
+      let disableStep = false;
       switch (step) {
         case 1:
-          set({ selectedContent: null, selectedBox: null, order: null });
+          localStorage.removeItem("order");
+          set({
+            selectedContent: null,
+            selectedBox: null,
+            order: null,
+            customer: null,
+          });
           break;
         case 2:
           set({ selectedContent: data });
@@ -78,11 +92,12 @@ const useContentStore = create<IContentStore>((set, get) => ({
           set({ selectedBox: data });
           break;
         case 4:
+          set({ customer: data });
           await createCustomer(data);
           break;
 
         case 6:
-          const { selectedContent, selectedBox } = get();
+          const { selectedContent } = get();
 
           const box = get().getContentBox();
 
@@ -101,6 +116,12 @@ const useContentStore = create<IContentStore>((set, get) => ({
 
           const order = await createOrder(payload);
 
+          if (order.data.preferenceResult.init_point) {
+            localStorage.setItem("order", JSON.stringify(order.data));
+            disableStep = true;
+            window.location.href = order.data.preferenceResult.init_point;
+          }
+
           set({ order: order.data });
           break;
 
@@ -108,9 +129,27 @@ const useContentStore = create<IContentStore>((set, get) => ({
           break;
       }
 
-      set({ step });
+      !disableStep && set({ step });
     } catch (error) {
       console.log("Error setting step", error);
+    }
+  },
+
+  preLoadOrder: async () => {
+    try {
+      const order = JSON.parse(localStorage.getItem("order") || "");
+
+      set({
+        order,
+        selectedContent: order.order.branch_id,
+        selectedBox: order.preferenceResult.box_id,
+      });
+
+      localStorage.removeItem("order");
+    } catch (error) {
+      window.location.href = "/";
+
+      console.log("Error preloading order", error);
     }
   },
 

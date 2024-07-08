@@ -2,13 +2,14 @@ import Image from "next/image";
 import React from "react";
 import mediumBox from "@/assets/mediumBox.svg";
 import { CiCreditCard2 } from "react-icons/ci";
+import { baseUrl } from "@/services";
 import useContentStore from "@/store/contentStore";
 export default function CardHireBox() {
   const getContentBoxs = useContentStore((state) => state.getContentBox());
   return (
-    <div className=" w-full px-20 border border-r-1 border-r-[#009080] pt-10">
+    <div className=" w-full px-5 md:px-20 md:border md:border-b-0 border-b border-b-primaryGreen md:border-r-1 md:border-r-[#009080] pt-10">
       <Image
-        src={mediumBox}
+        src={`${baseUrl}/public/${getContentBoxs.box_type_id.primary_image}`}
         alt="Retreat Image"
         width={350}
         height={350}

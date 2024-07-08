@@ -18,7 +18,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        anuphan: ["Anuphan", "sans-serif"],
+      },
       colors: {
+        primaryGreen: "#009682",
         primaryDark: "#172832",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

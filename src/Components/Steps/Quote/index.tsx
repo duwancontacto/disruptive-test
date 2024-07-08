@@ -4,8 +4,10 @@ import fondOtherPage from "@/assets/fondOtherPage.svg";
 import DataQuote from "./DataQuote";
 import ChooseUs from "./ChooseUs";
 import Steps from "..";
+import useScrollToTop from "@/hooks/useScroll";
 
 export default function Quote() {
+  useScrollToTop();
   return (
     <div className="flex flex-col min-h-screen z-30 max-w-md md:max-w-6xl mx-auto">
       <main className="flex-1  p-6 md:p-10">
@@ -13,8 +15,8 @@ export default function Quote() {
           <Image
             src={fondOtherPage}
             alt=""
-            className="absolute z-[-1] w-full top-0 left-0 h-full object-cover "
-            width={100}
+            className="absolute z-[-1] w-full top-0 left-0  object-cover "
+            width={200}
             height={100}
           />
         </div>
@@ -31,9 +33,8 @@ export default function Quote() {
         </div>
         <Steps currentStep={3} />
 
-        <div className="lg:flex block justify-between  mt-10 gap-20">
+        <div className="lg:flex text-center block justify-between  mt-10 gap-20">
           <ChooseUs />
-
           <DataQuote />
         </div>
       </main>

@@ -3,15 +3,6 @@ export function BranchSkeleton() {
 
   return (
     <div className="p-4 space-y-8 max-w-[1000px] mx-auto">
-      <div className="flex space-x-4 mb-4 mx-auto justify-center">
-        {["Todas", "CABA", "GBA", "Interior"].map((tab, index) => (
-          <div
-            key={index}
-            className="flex-1 h-10 bg-gray-300 max-w-[100px] animate-pulse rounded-md"
-          />
-        ))}
-      </div>
-
       {skeletonItems.map((item, index) => (
         <div
           key={index}
@@ -28,6 +19,23 @@ export function BranchSkeleton() {
           </div>
         </div>
       ))}
+    </div>
+  );
+}
+
+export function BranchCategorySkeleton() {
+  const skeletonItems = [1, 2, 3, 4];
+
+  return (
+    <div className="p-4 space-y-8 max-w-[1000px] mx-auto">
+      <div className="flex space-x-4 mb-4 mx-auto justify-center">
+        {["Todas", "CABA", "GBA", "Interior"].map((tab, index) => (
+          <div
+            key={index}
+            className="flex-1 h-10 bg-gray-300 max-w-[100px] animate-pulse rounded-md"
+          />
+        ))}
+      </div>
     </div>
   );
 }

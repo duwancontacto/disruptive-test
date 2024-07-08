@@ -3,22 +3,22 @@ import { CiCreditCard2 } from "react-icons/ci";
 import { IoCalendarOutline } from "react-icons/io5";
 import { RiPhoneLockLine } from "react-icons/ri";
 import { PiHandshakeLight } from "react-icons/pi";
-import borderWhy from "@/assets/borderwhy.svg";
+import borderWhy from "@/assets/box.svg";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import Image from "next/image";
 export default function ChooseUs() {
   return (
     <>
-      <div className=" relative  w-full rounded-lg  ">
+      <div className=" relative  w-full text-center rounded-lg  ">
         <Image
           src={borderWhy}
           width={500}
           height={500}
           alt="border"
-          className=" absolute top-0 left-0 h-full z-[-1]"
+          className=" h-full z-[-1] mx-auto"
         />
 
-        <div className="   p-16 ">
+        {/*  <div className="  pt-0 md:p-16 ">
           <h1 className="text-6xl font-bold text-gray-900 ">
             <span className="font-light flex flex-row items-center">
               <span className="text-teal-500 text-[30px]">[</span> Por qué
@@ -67,7 +67,7 @@ export default function ChooseUs() {
               <span>Calidad de servicio</span>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </>
   );

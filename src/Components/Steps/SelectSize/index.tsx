@@ -1,19 +1,23 @@
+"use client";
 import React from "react";
 import CardSelectSize from "./CardSelectSize";
 import Consultation from "../Consultation";
 import Image from "next/image";
 import fondOtherPage from "@/assets/fondOtherPage.svg";
 import Steps from "..";
+import useScrollToTop from "@/hooks/useScroll";
 export default function SelectSize() {
+  useScrollToTop();
+
   return (
     <div className="flex flex-col min-h-screen ">
-      <main className="flex-1  p-6 md:p-10">
+      <main className="flex-1  p-6 px-2 md:p-10">
         <div>
           <Image
             src={fondOtherPage}
             alt=""
-            className="absolute z-[-1] w-full top-0 left-0 h-full object-cover "
-            width={100}
+            className="absolute z-[-1] w-full top-0 left-0  object-cover "
+            width={200}
             height={100}
           />
         </div>

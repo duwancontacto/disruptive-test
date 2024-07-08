@@ -1,11 +1,26 @@
 import React from "react";
 import Image from "next/image";
 import LogoFooter from "../assets/logoFooter.svg";
+import Whatsapp from "../assets/Whatsapp.svg";
+import { FaWhatsapp } from "react-icons/fa";
 export default function Footer() {
   return (
-    <>
-      <footer className="md:flex block items-center  justify-around  p-3 border-b">
-        <div>
+    <div className=" bg-white">
+      <a
+        target="_blank"
+        href="https://wa.me/+5491171410700"
+        className=" fixed bottom-3 md:bottom-5 right-3 md:right-5 z-[100]"
+      >
+        <Image
+          src={Whatsapp}
+          alt="whatsapp"
+          width={50}
+          height={50}
+          className=" mx-auto"
+        />
+      </a>
+      <footer className="flex flex-col md:flex-row items-center  justify-around  p-3 border-b  py-20 font-anuphan font-light container">
+        <div className="md:w-1/3 text-center">
           <Image
             src={LogoFooter}
             alt="logoHausler"
@@ -13,32 +28,73 @@ export default function Footer() {
             height={200}
             className=" mx-auto"
           />
-          <p className="text-[primaryDark] text-[12px] md: mt-3 text-center md:text-start">
+          <a
+            href="https://hausler.com.ar/terminos-y-condiciones/"
+            className="text-[primaryDark] text-[12px] mt-3 text-center hover:text-primaryGreen"
+          >
             Términos y Condiciones
-          </p>
+          </a>
         </div>
 
-        <div className="  justify-center text-center md:text-start">
-          <div>
-            <p className="text-[21px] text-[primaryDark]">0810 345 3460 </p>
-            <p className="text-[21px] text-[primaryDark]">
-              info@hausler.com.ar
-            </p>
-            <p className="text-[21px] text-[primaryDark]">+54 9 11 6356 7887</p>
-          </div>
+        <div className=" flex flex-col justify-center text-center md:text-start pt-10 md:pt-0 md:w-1/3">
+          <a
+            href="tel:08103453460"
+            target="_blank"
+            className="text-[21px] text-primaryDark hover:text-primaryGreen"
+          >
+            0810 345 3460{" "}
+          </a>
+          <a
+            href="mailto:info@hausler.com.ar"
+            target="_blank"
+            className="text-[21px] text-primaryDark hover:text-primaryGreen"
+          >
+            info@hausler.com.ar
+          </a>
+          <a
+            href="https://wa.me/+5491171410700"
+            target="_blank"
+            className="text-[21px] text-primaryDark hover:text-primaryGreen"
+          >
+            +54 9 11 6356 7887
+          </a>
 
-          <p className="mt-3 text-[12px] text-[primaryDark]">
-            Si querés trabajar con nosotros, mandanos tu CV a:
+          <p className="mt-3 text-[12px] text-primaryDark hover:text-primaryGreen">
+            Si querés trabajar con nosotros, mandanos tu CV a: <br />
             <span className="font-bold"> reclutamiento@hausler.com.ar </span>
           </p>
         </div>
-        <div className="text-[21px] text-[primaryDark] text-center md:text-start">
-          <p>FaceBook</p>
-          <p>Instragam</p>
-          <p> Linkedin</p>
-          <p> Youtube</p>
+        <div className=" flex flex-col text-[21px] lg:border-l border-l-gray-800 text-primaryDark text-center md:text-center font-light pt-10 md:pt-0 font-anuphan md:w-1/3">
+          <a
+            target="_blank"
+            href="https://www.facebook.com/HauslerArgentina/"
+            className="hover:text-primaryGreen"
+          >
+            Facebook
+          </a>
+          <a
+            target="_blank"
+            href="https://www.instagram.com/hausler.arg/"
+            className="hover:text-primaryGreen"
+          >
+            Instragam
+          </a>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/company/hausler-cajas-de-seguridad-privadas/?originalSubdomain=ar"
+            className="hover:text-primaryGreen"
+          >
+            Linkedin
+          </a>
+          <a
+            target="_blank"
+            href="https://www.youtube.com/c/HauslerCajasdeSeguridad"
+            className="hover:text-primaryGreen"
+          >
+            Youtube
+          </a>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

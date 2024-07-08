@@ -7,14 +7,23 @@ import PaymentMethods2 from "./PaymentMethods";
 import Steps from "..";
 import useContentStore from "@/store/contentStore";
 import { useForm } from "react-hook-form";
+import useScrollToTop from "@/hooks/useScroll";
 
 export default function FinalizePurchase() {
+  useScrollToTop();
   const setStep = useContentStore((state) => state.setStep);
+  const customer = useContentStore((state) => state.customer);
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: customer.email,
+      name: customer.name,
+    },
+  });
 
   const onSubmit = (data: any) => {
     setStep(6, data);
@@ -22,13 +31,13 @@ export default function FinalizePurchase() {
 
   return (
     <div className="flex flex-col min-h-screen z-30 max-w-md md:max-w-6xl mx-auto ">
-      <main className="flex-1  p-6 md:p-10">
+      <main className="flex-1  p-0  md:p-10">
         <div>
           <Image
             src={fondOtherPage}
             alt=""
-            className="absolute z-[-1] w-full top-0 left-0 h-full object-cover "
-            width={100}
+            className="absolute z-[-1] w-full top-0 left-0 object-cover "
+            width={200}
             height={100}
           />
         </div>
@@ -46,7 +55,7 @@ export default function FinalizePurchase() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <PurchaseData errors={errors} register={register} />
-          <PaymentMethods2 errors={errors} register={register} />
+          <PaymentMethods2 errors={errors} register={register} watch={watch} />
         </form>
       </main>
     </div>

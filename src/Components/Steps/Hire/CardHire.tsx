@@ -12,20 +12,23 @@ export default function CardHire() {
 
   return (
     <div className="mt-32">
-      <div>
+      <div className="max-h-[400px] border overflow-hidden">
         <Image
           src={`${baseUrl}/public/${getContentBoxs.primary_image}`}
           alt=""
-          className=" z-[1] w-full w-auto object-cover "
+          className=" z-[1] w-full object-cover "
           width={50}
           height={50}
         />
       </div>
-      <div className=" block md:flex w-full justify-between items-start borderCard">
-        <CardHireBox />
-        <CardHireLocation />
+      <div className="border border-primaryGreen">
+        <div className=" block md:flex w-full justify-between items-start ">
+          <CardHireBox />
+          <CardHireLocation />
+        </div>
+
+        <BookCard />
       </div>
-      <BookCard />
     </div>
   );
 }
