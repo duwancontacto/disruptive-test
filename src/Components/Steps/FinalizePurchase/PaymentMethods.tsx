@@ -11,6 +11,7 @@ interface Props {
 export default function PaymentMethods2({ register, errors, watch }: Props) {
   const getContentBox = useContentStore((state) => state.getContentBox());
   const getContentBoxs = useContentStore((state) => state.getContentBoxs());
+  const loadingOrder = useContentStore((state) => state.loadingOrder);
 
   const paymentMethod = watch("paymentMethod");
   return (
@@ -21,8 +22,8 @@ export default function PaymentMethods2({ register, errors, watch }: Props) {
             src={`${baseUrl}/public/${getContentBoxs.primary_image}`}
             alt=""
             className="absolute top-0 left-0 object-cover rounded-full w-full h-full"
-            width={100}
-            height={100}
+            width={200}
+            height={200}
           />
         </div>
         <div className="text-[primaryDark] text-[14px] ml-5">
@@ -135,7 +136,10 @@ export default function PaymentMethods2({ register, errors, watch }: Props) {
         </label>
       </div>
       <div className="text-center flex flex-col justify-center items-center">
-        <button className="text-[#FFFFFF] text-[16px] font-bold buttonQuote mt-10">
+        <button
+          disabled={loadingOrder as any}
+          className="text-[#FFFFFF] text-[16px] font-bold buttonQuote mt-10 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           CONTRATAR
         </button>
         <a

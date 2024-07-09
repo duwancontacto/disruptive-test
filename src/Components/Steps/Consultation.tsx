@@ -12,7 +12,7 @@ export default function Consultation() {
         través de{" "}
         <span className="text-[#3AD8AB] border-b-2 border-[#3AD8AB] cursor-pointer font-medium">
           Whatsapp
-        </span>
+        </span>{" "}
         y un asesor especializado te podrá responder.
       </p>
     </div>

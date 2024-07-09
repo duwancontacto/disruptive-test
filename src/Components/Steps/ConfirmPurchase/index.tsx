@@ -12,15 +12,6 @@ export default function ConfirmationPage() {
   const getContentBox = useContentStore((state) => state.getContentBox());
   const getContentBoxs = useContentStore((state) => state.getContentBoxs());
 
-  console.log(
-    "asd",
-    order,
-    getContentBox,
-    getContentBoxs,
-    "aa",
-    !order || !getContentBox || !getContentBoxs
-  );
-
   if (!order || !getContentBox || !getContentBoxs) return <> </>;
 
   return (

@@ -12,6 +12,7 @@ interface IContentStore {
   themes: Theme[];
   categories: Category[];
   loadingContents: Boolean;
+  loadingOrder: Boolean;
   getThemesAndCategories: () => void;
   filterByCategory: (category_id: string) => void;
   setStep: (step: number, id?: string) => void;
@@ -36,6 +37,7 @@ const useContentStore = create<IContentStore>((set, get) => ({
   themes: [],
   categories: [],
   contents: [],
+  loadingOrder: false,
   loadingContents: false,
   step: 1,
   order: null,
@@ -114,7 +116,11 @@ const useContentStore = create<IContentStore>((set, get) => ({
             },
           };
 
+          set({ loadingOrder: true });
+
           const order = await createOrder(payload);
+
+          set({ loadingOrder: false });
 
           if (order.data.preferenceResult.init_point) {
             localStorage.setItem("order", JSON.stringify(order.data));

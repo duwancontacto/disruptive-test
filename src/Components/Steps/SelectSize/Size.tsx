@@ -27,8 +27,8 @@ export function Size({ card, setStep }: Props) {
             <Image
               src={`${baseUrl}/public/${card.box_type_id.primary_image}`}
               alt="Retreat Image"
-              width={50}
-              height={50}
+              width={500}
+              height={300}
               className="  object-cover  md:rounded-s-xl  w-full "
             />
           </div>

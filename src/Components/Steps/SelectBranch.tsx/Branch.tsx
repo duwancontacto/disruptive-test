@@ -17,18 +17,18 @@ export function Branch({ card, setStep }: BranchProps) {
 
   return (
     <animated.div ref={ref} key={`${card._id}`} style={props}>
-      <div className="max-w-md mt-5 mx-auto z-20 border relative rounded-xl shadow-md overflow-hidden md:max-w-4xl">
+      <div className="max-w-md mt-5 mx-auto z-20  relative md:rounded-s-xl shadow-md overflow-hidden md:max-w-4xl">
         <div className="md:flex">
-          <div className="md:shrink-0 border w-full md:w-1/2">
+          <div className="md:shrink-0  w-full md:w-1/2">
             <Image
               src={`${baseUrl}/public/${card.primary_image}`}
               alt="Retreat Image"
-              width={50}
-              height={50}
-              className="  object-cover  md:rounded-s-xl h-full  w-full "
+              width={500}
+              height={300}
+              className="  object-cover rounded-t-xl md:rounded-t-none md:rounded-s-xl h-full  w-full "
             />
           </div>
-          <div className=" w-full rounded-b-xl md:rounded-s-none md:rounded-r-xl  px-7 p-3 borderCard">
+          <div className=" w-full rounded-b-xl md:rounded-s-none md:rounded-r-xl  px-7 p-3 borderCard border-l ">
             <h6 className="text-[#009080] font-bold pl-1 text-start text-[25px] ">
               {card.name}
             </h6>
