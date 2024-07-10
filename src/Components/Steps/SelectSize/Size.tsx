@@ -85,7 +85,7 @@ export function Size({ card, setStep }: Props) {
           </div>
         </div>
       </div>
-      {(card.stock || !card.available) && (
+      {(!card.stock || !card.available) && (
         <div className="text-end max-w-md mx-auto md:max-w-4xl pt-3 ">
           <a
             href="https://wa.me/+5491171410700"
