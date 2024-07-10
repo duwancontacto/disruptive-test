@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import mediumBox from "@/assets/mediumBox.svg";
-import { CiCreditCard2 } from "react-icons/ci";
+import CardSvg from "@/assets/card.svg";
 import { baseUrl } from "@/services";
 import useContentStore from "@/store/contentStore";
 export default function CardHireBox() {
@@ -11,16 +10,22 @@ export default function CardHireBox() {
       <Image
         src={`${baseUrl}/public/${getContentBoxs.box_type_id.primary_image}`}
         alt="Retreat Image"
-        width={350}
-        height={350}
+        width={500}
+        height={500}
         className="  z-[1] w-full h-full object-cover  "
       />
 
-      <div className="w-full   py-9   ">
-        <div className="flex items-start pt-5">
-          <CiCreditCard2 size={40} className="" />
+      <div className="w-full   pb-9 pt-1   ">
+        <div className="flex items-center  ">
+          <Image
+            src={CardSvg}
+            alt="Retreat Image"
+            width={27}
+            height={17}
+            className="  pt-[1px] "
+          />
 
-          <h6 className="text-[#009080] font-bold pl-1 text-[30px] mb-2 ">
+          <h6 className="text-[#009080] font-bold  text-[30px] pl-3 ">
             {getContentBoxs.box_type_id.name}
           </h6>
         </div>

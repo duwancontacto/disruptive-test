@@ -11,6 +11,7 @@ import Quote from "@/Components/Steps/Quote";
 import Hire from "@/Components/Steps/Hire";
 import FinalizePurchase from "@/Components/Steps/FinalizePurchase";
 import ConfirmationPage from "@/Components/Steps/ConfirmPurchase";
+import Head from "next/head";
 export default function Home() {
   const { getCategories, getContents, step } = useContentStore((state) => ({
     getCategories: state.getThemesAndCategories,

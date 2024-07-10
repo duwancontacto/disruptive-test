@@ -1,5 +1,4 @@
 import { FaInfoCircle } from "react-icons/fa";
-import { CiCreditCard2 } from "react-icons/ci";
 import { IoMdAdd } from "react-icons/io";
 import Image from "next/image";
 import { animated } from "react-spring";
@@ -86,8 +85,8 @@ export function Size({ card, setStep }: Props) {
           </div>
         </div>
       </div>
-      {(!card.stock || !card.available) && (
-        <div className="text-end max-w-md mx-auto md:max-w-4xl ">
+      {(card.stock || !card.available) && (
+        <div className="text-end max-w-md mx-auto md:max-w-4xl pt-3 ">
           <a
             href="https://wa.me/+5491171410700"
             target="_blank"
