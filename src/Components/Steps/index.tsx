@@ -1,4 +1,5 @@
 import { UseAnimation } from "@/hooks/useAnimation";
+import useContentStore from "@/store/contentStore";
 import React from "react";
 import { animated } from "react-spring";
 const steps = [
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const Steps = ({ currentStep }: Props) => {
+  const setStep = useContentStore((state) => state.setStep);
   const { ref, props } = UseAnimation({
     duration: 500,
   });
@@ -29,7 +31,14 @@ const Steps = ({ currentStep }: Props) => {
                 index < steps.length - 1 && "lg:w-full"
               } `}
             >
-              <div className="flex flex-col items-center">
+              <div
+                className={`flex flex-col items-center  ${
+                  currentStep > step.id ? "cursor-pointer" : ""
+                }`}
+                onClick={() => {
+                  currentStep > step.id && setStep(index + 1, "", true);
+                }}
+              >
                 <div
                   className={`flex items-center justify-center w-10 h-10 rounded-full ${
                     currentStep >= step.id

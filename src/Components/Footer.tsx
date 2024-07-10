@@ -5,7 +5,7 @@ import Whatsapp from "../assets/Whatsapp.svg";
 import { FaWhatsapp } from "react-icons/fa";
 export default function Footer() {
   return (
-    <div className=" bg-white">
+    <div className=" bg-white  border-t border-t-gray-800">
       <a
         target="_blank"
         href="https://wa.me/+5491171410700"
@@ -19,7 +19,7 @@ export default function Footer() {
           className=" mx-auto"
         />
       </a>
-      <footer className="flex flex-col md:flex-row items-center  justify-around  p-3 border-b  py-20 font-anuphan font-light container">
+      <footer className="flex flex-col md:flex-row items-center  justify-around  p-3 border-b  py-0 font-anuphan font-light container">
         <div className="md:w-1/3 text-center">
           <Image
             src={LogoFooter}
@@ -36,7 +36,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className=" flex flex-col justify-center text-center md:text-start pt-10 md:pt-0 md:w-1/3">
+        <div className=" flex flex-col justify-center text-center md:text-start pt-10  md:pt-10 md:w-1/3">
           <a
             href="tel:08103453460"
             target="_blank"
@@ -64,35 +64,37 @@ export default function Footer() {
             <span className="font-bold"> reclutamiento@hausler.com.ar </span>
           </p>
         </div>
-        <div className=" flex flex-col text-[21px] lg:border-l border-l-gray-800 text-primaryDark text-center md:text-center font-light pt-10 md:pt-0 font-anuphan md:w-1/3">
-          <a
-            target="_blank"
-            href="https://www.facebook.com/HauslerArgentina/"
-            className="hover:text-primaryGreen"
-          >
-            Facebook
-          </a>
-          <a
-            target="_blank"
-            href="https://www.instagram.com/hausler.arg/"
-            className="hover:text-primaryGreen"
-          >
-            Instragam
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/company/hausler-cajas-de-seguridad-privadas/?originalSubdomain=ar"
-            className="hover:text-primaryGreen"
-          >
-            Linkedin
-          </a>
-          <a
-            target="_blank"
-            href="https://www.youtube.com/c/HauslerCajasdeSeguridad"
-            className="hover:text-primaryGreen"
-          >
-            Youtube
-          </a>
+        <div className=" flex flex-col  text-[21px] lg:border-l border-l-gray-800  text-primaryDark text-center md:text-center font-light py-10 font-anuphan md:w-1/3 md:py-20">
+          <div className="flex flex-col  mx-auto text-start max-w-[100px]">
+            <a
+              target="_blank"
+              href="https://www.facebook.com/HauslerArgentina/"
+              className="hover:text-primaryGreen"
+            >
+              Facebook
+            </a>
+            <a
+              target="_blank"
+              href="https://www.instagram.com/hausler.arg/"
+              className="hover:text-primaryGreen"
+            >
+              Instragam
+            </a>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/hausler-cajas-de-seguridad-privadas/?originalSubdomain=ar"
+              className="hover:text-primaryGreen"
+            >
+              Linkedin
+            </a>
+            <a
+              target="_blank"
+              href="https://www.youtube.com/c/HauslerCajasdeSeguridad"
+              className="hover:text-primaryGreen"
+            >
+              Youtube
+            </a>
+          </div>
         </div>
       </footer>
     </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { animated } from "react-spring";
 
 import { CiLocationOn, CiCreditCard2 } from "react-icons/ci";
-
+import CardSvg from "@/assets/card.svg";
 import { IoMdAdd } from "react-icons/io";
 import { baseUrl } from "@/services";
 import { UseAnimation } from "@/hooks/useAnimation";
@@ -45,9 +45,18 @@ export function Branch({ card, setStep }: BranchProps) {
             <div className=" w-full  CarBottomBar ml-1 "></div>
 
             {card.details.map((detail: any) => (
-              <div key={detail.id} className="flex pl-3 items-start   mt-2">
-                <div dangerouslySetInnerHTML={{ __html: detail.icon }} />
-                <p className="text-[primaryDark] pl-2 text-start text-[11px]">
+              <div
+                key={detail.id}
+                className="flex pl-3 items-start relative  mt-2"
+              >
+                <div className="w-[25px] absolute left-3 flex justify-center">
+                  <div
+                    dangerouslySetInnerHTML={{ __html: detail.icon }}
+                    className=""
+                  />
+                </div>
+
+                <p className="text-[primaryDark] pl-8 text-start text-[11px]">
                   {detail.description}
                 </p>
               </div>
@@ -55,11 +64,16 @@ export function Branch({ card, setStep }: BranchProps) {
 
             <div className="flex justify-between mt-4">
               <div className="flex pl-3 items-start  ">
-                <CiCreditCard2
-                  className=" mr-1"
-                  size={18}
-                  color="primaryDark"
-                />
+                <div className="w-[25px]  flex justify-center">
+                  <Image
+                    src={CardSvg}
+                    alt="Retreat Image"
+                    width={17}
+                    height={11}
+                    className="  pt-[1px] "
+                  />
+                </div>
+
                 <p className="text-[primaryDark] pl-2 font-bold text-start text-[11px]">
                   {card.robotic ? "CAJA ROBOTIZADA" : "CAJA TRADICIONAL"}
                 </p>

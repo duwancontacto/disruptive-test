@@ -3,7 +3,7 @@ import { CiCreditCard2 } from "react-icons/ci";
 import { IoMdAdd } from "react-icons/io";
 import Image from "next/image";
 import { animated } from "react-spring";
-
+import CardSvg from "@/assets/card.svg";
 import { baseUrl } from "@/services";
 import { UseAnimation } from "@/hooks/useAnimation";
 
@@ -14,16 +14,15 @@ interface Props {
 
 export function Size({ card, setStep }: Props) {
   const { ref, props } = UseAnimation({ duration: 500 });
-  console.log("first", card);
   return (
     <animated.div ref={ref} key={`${card._id}`} style={props}>
       <div
         className={` ${
           !card.stock || !card.available ? "opacity-50 " : ""
-        } max-w-md mt-5 py-10 px-5 mx-auto z-20 border relative rounded-xl shadow-md overflow-hidden md:max-w-4xl border-[#009080] `}
+        } max-w-md mt-5  px-5 mx-auto z-20 border relative rounded-xl shadow-md overflow-hidden md:max-w-4xl border-[#009080] `}
       >
         <div className="md:flex">
-          <div className="md:shrink-0 w-full md:w-1/2 ">
+          <div className="md:shrink-0 w-full md:w-1/2 flex items-center pe-4 ">
             <Image
               src={`${baseUrl}/public/${card.box_type_id.primary_image}`}
               alt="Retreat Image"
@@ -32,10 +31,16 @@ export function Size({ card, setStep }: Props) {
               className="  object-cover  md:rounded-s-xl  w-full "
             />
           </div>
-          <div className=" w-full rounded-b-xl md:rounded-s-none md:rounded-r-xl  md:px-7 p-3 md:border-l-2 md:border-l-[#009080] ">
-            <div className="flex items-start  ">
-              <CiCreditCard2 size={40} className="" />
-              <h6 className="text-[#009080] font-bold pl-1 text-start text-[25px] ">
+          <div className=" w-full rounded-b-xl md:rounded-s-none md:rounded-r-xl py-10  md:px-7 p-3 md:border-l md:border-l-[#009080] ">
+            <div className="flex items-center  ">
+              <Image
+                src={CardSvg}
+                alt="Retreat Image"
+                width={27}
+                height={17}
+                className="  pt-[1px] "
+              />
+              <h6 className="text-[#009080] font-semibold text-start text-[25px] pl-3">
                 {card.box_type_id.name}
               </h6>
             </div>
@@ -53,14 +58,16 @@ export function Size({ card, setStep }: Props) {
             <div className="flex justify-between mt-4">
               <div>
                 {" "}
-                <a
-                  href="https://www.youtube.com/watch?v=PIYI2AiEFgM"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[primaryDark]  hover:text-[primaryDark] font-bold text-[12px]  border-b-2 border-[#172832] "
-                >
-                  ¿Querés saber cómo funcionan nuestras cajas robotizadas?
-                </a>
+                {card.box_type_id.robotic && (
+                  <a
+                    href="https://www.youtube.com/watch?v=PIYI2AiEFgM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[primaryDark]  hover:text-[primaryDark] font-bold text-[12px]  border-b-2 border-[#172832] "
+                  >
+                    ¿Querés saber cómo funcionan nuestras cajas robotizadas?
+                  </a>
+                )}
               </div>
 
               <button

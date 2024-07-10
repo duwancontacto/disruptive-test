@@ -32,7 +32,7 @@ export default function ConfirmationPage() {
             />
           </div>
           <h1 className="text-2xl  text-primaryDark mt-10">
-            Gracias por tu <span className="font-bold">contratación</span>
+            Gracias por tu <span className="font-semibold">contratación</span>
           </h1>
           <p className="text-primaryDark mt-2 max-w-[560px] mx-auto">
             Un representante de <span className="font-bold">HAUSLER</span> se
@@ -42,7 +42,7 @@ export default function ConfirmationPage() {
           </p>
         </div>
         <div className="= pt-4">
-          <h2 className="text-xl  text-center text-primaryGreen mb-2">
+          <h2 className="text-xl font-semibold text-center text-[#009080] mb-2">
             Pedido #{order.orderCount} ({new Date().toLocaleDateString()})
           </h2>
           <div className="border-t border-gray-400 pt-4">

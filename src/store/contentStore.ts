@@ -15,7 +15,7 @@ interface IContentStore {
   loadingOrder: Boolean;
   getThemesAndCategories: () => void;
   filterByCategory: (category_id: string) => void;
-  setStep: (step: number, id?: string) => void;
+  setStep: (step: number, id?: string, disable?: boolean) => void;
   getContentBoxs: () => any;
   getContentBox: () => any;
   preLoadOrder: () => void;
@@ -74,65 +74,71 @@ const useContentStore = create<IContentStore>((set, get) => ({
     }, 300);
   },
 
-  setStep: async (step: number, data: string | any) => {
+  setStep: async (
+    step: number,
+    data: string | any,
+    disableValidation?: boolean
+  ) => {
     try {
       let disableStep = false;
-      switch (step) {
-        case 1:
-          localStorage.removeItem("order");
-          set({
-            selectedContent: null,
-            selectedBox: null,
-            order: null,
-            customer: null,
-          });
-          break;
-        case 2:
-          set({ selectedContent: data });
-          break;
-        case 3:
-          set({ selectedBox: data });
-          break;
-        case 4:
-          set({ customer: data });
-          await createCustomer(data);
-          break;
+      if (!disableValidation) {
+        switch (step) {
+          case 1:
+            localStorage.removeItem("order");
+            set({
+              selectedContent: null,
+              selectedBox: null,
+              order: null,
+              customer: null,
+            });
+            break;
+          case 2:
+            set({ selectedContent: data });
+            break;
+          case 3:
+            set({ selectedBox: data });
+            break;
+          case 4:
+            set({ customer: data });
+            await createCustomer(data);
+            break;
 
-        case 6:
-          const { selectedContent } = get();
+          case 6:
+            const { selectedContent } = get();
 
-          const box = get().getContentBox();
+            const box = get().getContentBox();
 
-          const payload = {
-            note: data.note,
-            box_type_id: box.box_type_id._id,
-            branch_id: selectedContent,
-            payment_method: data.paymentMethod,
-            customer: {
-              name: data.name,
-              email: data.email,
-              dni: data.dni,
-              phone: data.phone,
-            },
-          };
+            const payload = {
+              note: data.note,
+              box_type_id: box.box_type_id._id,
+              branch_id: selectedContent,
+              payment_method: data.paymentMethod,
+              customer: {
+                name: data.name,
+                email: data.email,
+                dni: data.dni,
+                phone: data.phone,
+              },
+            };
 
-          set({ loadingOrder: true });
+            set({ loadingOrder: true });
 
-          const order = await createOrder(payload);
+            const order = await createOrder(payload);
 
-          set({ loadingOrder: false });
+            set({ loadingOrder: false });
 
-          if (order.data.preferenceResult.init_point) {
-            localStorage.setItem("order", JSON.stringify(order.data));
-            disableStep = true;
-            window.location.href = order.data.preferenceResult.init_point;
-          }
+            if (order.data.preferenceResult.init_point) {
+              localStorage.setItem("order", JSON.stringify(order.data));
+              disableStep = true;
+              window.location.href = order.data.preferenceResult.init_point;
+            }
 
-          set({ order: order.data });
-          break;
+            set({ order: order.data });
+            break;
 
-        default:
-          break;
+          default:
+            break;
+        }
       }
 
       !disableStep && set({ step });

@@ -20,7 +20,7 @@ export default function SelectBranch() {
           <Image
             src={fondoHome}
             alt=""
-            className="absolute z-[-1] w-full top-0 left-0  object-cover"
+            className="absolute z-[-1] w-full top-[0px] border  left-0  object-cover"
             width={200}
             height={100}
           />
