@@ -20,7 +20,7 @@ export default function Footer() {
         />
       </a>
       <footer className="flex flex-col md:flex-row items-center  justify-around  p-3 border-b  py-0 font-anuphan font-light container">
-        <div className="md:w-1/3 text-center">
+        <div className="md:w-1/3 text-center pt-10 md:pt-0">
           <Image
             src={LogoFooter}
             alt="logoHausler"
@@ -65,7 +65,7 @@ export default function Footer() {
           </p>
         </div>
         <div className=" flex flex-col  text-[21px] lg:border-l border-l-gray-800  text-primaryDark text-center md:text-center font-light py-10 font-anuphan md:w-1/3 md:py-20">
-          <div className="flex flex-col  mx-auto text-start max-w-[100px]">
+          <div className="flex flex-col  mx-auto text-center md:text-start max-w-[100px]">
             <a
               target="_blank"
               href="https://www.facebook.com/HauslerArgentina/"

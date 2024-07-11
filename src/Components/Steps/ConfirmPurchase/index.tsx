@@ -17,9 +17,9 @@ export default function ConfirmationPage() {
   return (
     <>
       <div className="max-w-4xl mx-auto my-10 p-8 bg-white shadow-md">
-        <div className="flex justify-center">
+        {/*   <div className="flex justify-center">
           <ConfettiExplosion />
-        </div>
+        </div> */}
 
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">

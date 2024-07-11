@@ -16,7 +16,7 @@ export default function PaymentMethods2({ register, errors, watch }: Props) {
   const paymentMethod = watch("paymentMethod");
   return (
     <div className=" w-full  p-0 md:p-10">
-      <div className="block md:flex  justify-center md:justify-start items-center mt-5 lg:mt-0">
+      <div className="flex  pt-5 md:pt-0 justify-start items-center mt-5 lg:mt-0">
         <div className="relative w-[100px] h-[100px]">
           <Image
             src={`${baseUrl}/public/${getContentBoxs.primary_image}`}

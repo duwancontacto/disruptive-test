@@ -81,6 +81,8 @@ const useContentStore = create<IContentStore>((set, get) => ({
   ) => {
     try {
       let disableStep = false;
+      const contents = get().contents;
+
       if (!disableValidation) {
         switch (step) {
           case 1:
@@ -90,6 +92,7 @@ const useContentStore = create<IContentStore>((set, get) => ({
               selectedBox: null,
               order: null,
               customer: null,
+              filterContents: contents,
             });
             break;
           case 2:
@@ -136,6 +139,16 @@ const useContentStore = create<IContentStore>((set, get) => ({
             set({ order: order.data });
             break;
 
+          default:
+            break;
+        }
+      } else {
+        switch (step) {
+          case 1:
+            set({
+              filterContents: contents,
+            });
+            break;
           default:
             break;
         }
