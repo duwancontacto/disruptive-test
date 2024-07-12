@@ -21,7 +21,7 @@ export function Size({ card, setStep }: Props) {
         } max-w-md mt-5  px-5 mx-auto z-20 border relative rounded-xl shadow-md overflow-hidden md:max-w-4xl border-[#009080] `}
       >
         <div className="md:flex">
-          <div className="md:shrink-0 w-full md:w-1/2 flex items-center pe-4 ">
+          <div className="md:shrink-0 w-full md:w-1/2 flex items-center md:pe-4 ">
             <Image
               src={`${baseUrl}/public/${card.box_type_id.primary_image}`}
               alt="Retreat Image"
