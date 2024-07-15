@@ -22,7 +22,7 @@ export function Size({ card, setStep }: Props) {
       >
         <div className="md:flex">
           <div
-            className="md:shrink-0 w-full md:w-1/2 flex items-center md:pe-4 "
+            className="md:shrink-0 w-full md:w-1/2 flex items-center md:pe-4 cursor-pointer"
             onClick={() => card.stock && card.available && setStep(3, card._id)}
           >
             <Image
