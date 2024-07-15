@@ -19,7 +19,7 @@ export default function PaymentMethods2({ register, errors, watch }: Props) {
       <div className="flex  pt-5 md:pt-0 justify-start items-center mt-5 lg:mt-0">
         <div className="relative w-[100px] h-[100px]">
           <Image
-            src={`${baseUrl}/public/${getContentBoxs.primary_image}`}
+            src={`${baseUrl}/api/v1/branchs/images/${getContentBoxs._id}`}
             alt=""
             className="absolute top-0 left-0 object-cover rounded-full w-full h-full"
             width={200}

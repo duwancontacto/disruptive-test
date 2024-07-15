@@ -23,7 +23,7 @@ export function Size({ card, setStep }: Props) {
         <div className="md:flex">
           <div className="md:shrink-0 w-full md:w-1/2 flex items-center md:pe-4 ">
             <Image
-              src={`${baseUrl}/public/${card.box_type_id.primary_image}`}
+              src={`${baseUrl}/api/v1/branchs/box-images/${card.box_type_id._id}`}
               alt="Retreat Image"
               width={500}
               height={300}

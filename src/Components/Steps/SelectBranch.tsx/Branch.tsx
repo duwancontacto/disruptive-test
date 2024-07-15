@@ -21,7 +21,7 @@ export function Branch({ card, setStep }: BranchProps) {
         <div className="md:flex">
           <div className="md:shrink-0  w-full md:w-1/2">
             <Image
-              src={`${baseUrl}/public/${card.primary_image}`}
+              src={`${baseUrl}/api/v1/branchs/images/${card._id}`}
               alt="Retreat Image"
               width={500}
               height={300}

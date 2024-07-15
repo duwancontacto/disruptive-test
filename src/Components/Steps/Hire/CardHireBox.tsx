@@ -8,7 +8,7 @@ export default function CardHireBox() {
   return (
     <div className=" w-full px-5 md:px-20 md:border md:border-b-0 border-b border-b-primaryGreen md:border-r-1 md:border-r-[#009080] pt-10">
       <Image
-        src={`${baseUrl}/public/${getContentBoxs.box_type_id.primary_image}`}
+        src={`${baseUrl}/api/v1/branchs/box-images/${getContentBoxs.box_type_id._id}`}
         alt="Retreat Image"
         width={500}
         height={500}

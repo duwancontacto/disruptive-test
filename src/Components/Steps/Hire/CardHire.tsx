@@ -14,7 +14,7 @@ export default function CardHire() {
     <div className="mt-32">
       <div className="max-h-[400px]  overflow-hidden">
         <Image
-          src={`${baseUrl}/public/${getContentBoxs.primary_image}`}
+          src={`${baseUrl}/api/v1/branchs/images/${getContentBoxs._id}`}
           alt=""
           className=" z-[1] w-full object-cover rounded-t-2xl"
           width={1500}
