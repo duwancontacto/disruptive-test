@@ -19,7 +19,10 @@ export function Branch({ card, setStep }: BranchProps) {
     <animated.div ref={ref} key={`${card._id}`} style={props}>
       <div className="max-w-md mt-5 mx-auto z-20  relative md:rounded-s-xl shadow-md overflow-hidden md:max-w-4xl">
         <div className="md:flex">
-          <div className="md:shrink-0  w-full md:w-1/2">
+          <div
+            className="md:shrink-0  w-full md:w-1/2 cursor-pointer"
+            onClick={() => setStep(2, card._id)}
+          >
             <Image
               src={`${baseUrl}/api/v1/branchs/images/${card._id}`}
               alt="Retreat Image"
