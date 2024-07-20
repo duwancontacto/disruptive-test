@@ -1,5 +1,6 @@
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.min.css";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 interface Props {
   isPlaying: boolean;
   setIsPlaying: any;
@@ -11,7 +12,7 @@ export function Video({ isPlaying, setIsPlaying }: Props) {
         <ModalVideo
           channel="custom"
           isOpen={isPlaying}
-          url="http://localhost:3001/public/Robotic/robotic.mp4"
+          url={`${BASE_URL}/public/Robotic/robotic.mp4`}
           onClose={() => setIsPlaying(false)}
         />
       )}
