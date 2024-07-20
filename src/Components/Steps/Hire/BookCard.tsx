@@ -26,9 +26,10 @@ export default function BookCard() {
         <div className=" inline-block pt-10">
           <p className="text-[#D9D9D9] relative text-[40px] leading-8  mt-8 line-through">
             {getArgPriceFormat(getContentBox.old_price)}
-            <span className="absolute -right-5 -top-8 text-sm text-[#009080]">
-              - {getDiscountPercent()}%
-            </span>
+            <div className="flex flex-col items-center justify-center absolute -right-[60px] -top-10 text-sm bg-[#009080] w-[60px] h-[60px] rounded-full  text-white ">
+              <span className="text-[16px]">{getDiscountPercent()}%</span>
+              <span className="text-[16px]">OFF</span>
+            </div>
           </p>
 
           <p className="text-[primaryDark] text-[60px]  ">
