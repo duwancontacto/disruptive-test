@@ -4,7 +4,6 @@ import Image from "next/image";
 import { animated } from "react-spring";
 import CardSvg from "@/assets/card.svg";
 import { baseUrl } from "@/services";
-import ReactPlayer from "react-player";
 import { UseAnimation } from "@/hooks/useAnimation";
 import { useState } from "react";
 import { Video } from "./Video";
