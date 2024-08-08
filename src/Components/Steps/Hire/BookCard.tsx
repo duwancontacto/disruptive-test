@@ -17,12 +17,15 @@ export default function BookCard() {
     <div className="flex justify-center items-center  p-3 py-10 md:p-10  border border-t-primaryGreen">
       <div className="text-center">
         <p className="text-[20px] text-[primaryDark] text-center">
-          A modo de reserva se cobrará únicamente en tu tarjeta el primer mes de
+          A modo de reserva se cobrará únicamente en su tarjeta el primer mes de
           servicio.
         </p>
         <p className="text-[20px] text-[primaryDark]  text-center">
-          el primer mes de servicio.
+          El precio reflejado corresponde a una contratación mensual por débito
+          automático con un mínimo de permanencia de 12 meses. Consulte a su
+          asesor por otros plazos y modalidades de pago.
         </p>
+        <p className="text-[20px] text-[primaryDark]  text-center"></p>
         <div className=" inline-block pt-10">
           <p className="text-[#D9D9D9] relative text-[40px] leading-8  mt-8 line-through">
             {getArgPriceFormat(getContentBox.old_price)}

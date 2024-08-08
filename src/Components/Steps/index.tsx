@@ -27,7 +27,7 @@ const Steps = ({ currentStep }: Props) => {
           {steps.map((step, index) => (
             <div
               key={step.id}
-              className={`flex items-start h-full   ${
+              className={`flex items-start h-full  mx-5 my-2 md:mx-0 md:my-0   ${
                 index < steps.length - 1 && "lg:w-full"
               } `}
             >
@@ -40,7 +40,7 @@ const Steps = ({ currentStep }: Props) => {
                 }}
               >
                 <div
-                  className={`flex items-center justify-center w-10 h-10 rounded-full ${
+                  className={`flex items-center justify-center w-6 md:w-10 h-6 md:h-10 rounded-full ${
                     currentStep >= step.id
                       ? "bg-teal-500 text-white"
                       : "bg-white border border-gray-300"
@@ -65,13 +65,13 @@ const Steps = ({ currentStep }: Props) => {
           {steps.map((step, index) => (
             <div
               key={step.id}
-              className={`flex items-start h-full   ${
+              className={`flex items-start h-full mx-5 my-2 md:mx-0 md:my-0  ${
                 index < steps.length - 1 && "lg:w-full"
               } `}
             >
               <div className="flex flex-col items-center">
                 <div
-                  className={`flex items-center justify-center w-10 h-10 rounded-full ${
+                  className={`flex items-center justify-center  w-6 md:w-10 h-6 md:h-10  rounded-full ${
                     currentStep >= step.id
                       ? "bg-teal-500 text-white"
                       : "bg-white border border-gray-300"
