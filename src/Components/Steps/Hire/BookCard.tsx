@@ -10,7 +10,7 @@ export default function BookCard() {
     const discount =
       ((getContentBox.old_price - getContentBox.price) * 100) /
       getContentBox.old_price;
-    return discount;
+    return discount % 1 === 0 ? discount : discount.toFixed(2);
   };
 
   return (
